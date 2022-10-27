@@ -4,7 +4,7 @@ const express  = require('express');
 const router = express.Router();
 
 // Las rutas de todos los courses
-router.get('/api/v1/course', (req, res)=>{
+router.get('/', (req, res)=>{
     res
         .status(200)
         .json({
@@ -14,7 +14,7 @@ router.get('/api/v1/course', (req, res)=>{
 });
 
 // Listar course por id
-router.get('/api/v1/course/:id', (req, res)=>{
+router.get('/:id', (req, res)=>{
     console.log(req.params.id);
     res
         .status(200)
@@ -25,7 +25,7 @@ router.get('/api/v1/course/:id', (req, res)=>{
 });
 
 //Actualizar course por id
-router.put('/api/v1/course/:id', (req, res)=>{
+router.put('/:id', (req, res)=>{
     console.log(req.params.id);
     res
         .status(200)

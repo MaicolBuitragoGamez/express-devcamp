@@ -3,10 +3,12 @@ const express = require('express');
 //2. Citar las dependencias necesarias para el proyecto.
 const dotenv = require('dotenv');
 const colors = require('colors');
+const connectDB = require('./config/db');
 const listEndpoint = require('express-list-endpoints');
 const courseRoutes = require('./routes/courseRoutes');
+const userRoutes = require('./routes/UserRoutes');
 
-//3. Esttablecer archivo de configuración.
+//3. Establecer archivo de configuración.
 dotenv.config({
     path: './config/config.env'
 });
@@ -16,8 +18,16 @@ console.log(process.env.PORT);
 //para el servidor de desarrollo
 const app = express();
 
+//Validemos el objeto application
+//para recibir datos en formato JSON
+app.use(express.json())
+
+//Conexión a db
+connectDB();
+
 //Rutas de proyecto
 app.use('/api/v1/courses', courseRoutes);
+app.use('/api/v1/users', userRoutes);
 
 //Crear un nuevo course
 app.post('/', (require, response) =>  {
