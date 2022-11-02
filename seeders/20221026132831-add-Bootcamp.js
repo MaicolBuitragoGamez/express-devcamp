@@ -7,7 +7,6 @@ module.exports = {
     await queryInterface.bulkInsert('bootcamps', [{
       name: 'Maicol',
       description: 'asd',
-      website: 'https://google.com/',
       phone: '3123155542',
       average_rating: '1',
       average_cost: '10'

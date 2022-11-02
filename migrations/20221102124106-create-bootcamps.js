@@ -10,32 +10,23 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      website: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      average_rating: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.STRING
       },
       average_cost: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        type: Sequelize.FLOAT
+      },
+      average_rating: {
+        type: Sequelize.INTEGER
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Bootcamps');
+    await queryInterface.dropTable('bootcamps');
   }
 };
