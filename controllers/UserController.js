@@ -3,78 +3,160 @@
 const sequelize = require('../config/seq')
 
 //Datatypes de sequelize
-const { DataTypes } = require('sequelize')
+const { DataTypes, ValidationError } = require('sequelize')
 
 //El modelo
 const UserModel = require('../models/user')
 
 //Crear la entidad:
-const User = UserModel(sequelize,DataTypes)
+const User = UserModel(sequelize, DataTypes)
 
 
 
 //listar todos los bootcamps
-exports.getAllUsers  = async (req, res)=>{
-    const users= await User.findAll();
-    res.status(200)
-    .json({
-        "success": true,
-        "data":users
-    })
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll();
+        res.status(200)
+            .json({
+                "success": true,
+                "data": users
+            })
+    } catch (error) {
+        res.status(200)
+            .json({
+                "success": false,
+                "errors": "Error de servidor desconocido"
+            })
+    }
 }
 
 //listar user por id
-exports.getSingleUser = async (req, res)=>{
-    const usersid = await User.findAll({
-        where:{
-            id:req.params.id
+exports.getSingleUser = async (req, res) => {
+    try {
+        const singleUser = await User.findByPk(req.params.id);
+        if (singleUser) {
+            res
+                .status(200)
+                .json({
+                    "success": true,
+                    "data": singleUser
+                })
+        } else {
+            res
+                .status(200)
+                .json({
+                    "success": false,
+                    "errors": "Usuario no existente"
+                })
         }
-    })
-    console.log(req.params.id)
-    res.status(200)
-    .json({
-        "success": true,
-        "data":usersid
-    })
+    } catch (error) {
+        res
+            .status(200)
+            .json({
+                "success": false,
+                "errors": "error del servidor"
+            })
+    }
 }
 
-//Actualizar user
-exports.updateUser =  async(req, res)=>{
-    const useridUpdate = await User.update( req.body,
-        {
-        where:{
-            id:req.params.id
+//actualizar user
+
+exports.updateUser = async (req, res) => {
+    try {
+        const singleUser = await User.findByPk(req.params.id)
+        if (!singleUser) {
+            res
+                .status(400)
+                .json({
+                    "success": false,
+                    "data": "usuario no existente"
+                })
+        } else {
+            await User.update(req.body, {
+                where: {
+                    id: req.params.id
+                }
+            });
+            const updateUser = await User.findByPk(req.params.id)
+            res
+                .status(200)
+                .json({
+                    "success": true,
+                    "data": updateUser
+                })
         }
-    });
-    console.log(req.params.id)
-    res.status(200)
-    .json({
-        "success": true,
-        "data":useridUpdate
-    })
+    } catch (error) {
+        res
+            .status(400)
+            .json({
+                "success": false,
+                "errors": "error de servidor desconocido"
+            })
+    }
 }
 
-//Eliminar user
-exports.deleteUser = async(req, res)=>{
-    const useridDelete = await User.destroy({
-        where:{
-            id:req.params.id
+//Borrar users 
+exports.deleteUser = async (req, res) => {
+    //console.log(req.params.id)
+    try {
+        const SingleUser = await User.findByPk(req.params.id);
+        if (!SingleUser) {
+            res
+                .status(400)
+                .json({
+                    "success": false,
+                    "errors": "Usuario no existente"
+                })
+        } else {
+            await User.destroy({
+                where: {
+                    id: req.params.id
+                }
+            });
         }
-    })
-    console.log(req.params.id)
-    res.status(200)
-    .json({
-        "success": true,
-        "data":useridDelete
-    })
+    } catch (error) {
+        res
+            .status(400)
+            .json({
+                "success": false,
+                "errors": " Error de servidor desconocido"
+            })
+    }
 }
 
 //Crear nuevo user
-exports.createUser = async (req, res)=>{
-    const newUser = await User.create(req.body);
-    res.status(200)
-    .json({
-        "success": true,
-        "data":newUser
-    })
+exports.createUser = async (req, res) => {
+    try {
+        const newUser = await User.create(req.body);
+        res.status(200)
+            .json({
+                "success": true,
+                "data": newUser
+            })
+
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            //recorrer el arreglo de errores
+            //Foreach
+            //map
+            const errores = error.errors.map((elemento) => {
+                return elemento.message
+
+            });
+            res
+                .status(400)
+                .json({
+                    "success": false,
+                    "errors": error
+                })
+        } else {
+            res
+                .status(400)
+                .json({
+                    "success": false,
+                    "errors": "error de servidor"
+                })
+        }
+    }
 }

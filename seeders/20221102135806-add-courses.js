@@ -10,7 +10,7 @@ module.exports = {
        weeks: '10',
        enroll_cost:'1000',
        minimum_skill:'JS Basico',
-       user_id: 1
+       bootcamp_id: 1
      },
      {
       title: 'Java - SpringBoot',
@@ -18,7 +18,7 @@ module.exports = {
       weeks: '2',
       enroll_cost:'500',
       minimum_skill:'Java avanzado',
-      user_id: 2
+      bootcamp_id: 2
     },
     {
       title: 'SQL - MySQL',
@@ -26,7 +26,7 @@ module.exports = {
       weeks: '4',
       enroll_cost:'5000',
       minimum_skill:'Conocimientos básicos de UML',
-      user_id: 3
+      bootcamp_id: 3
     },
     {
       title: 'MongoBD',
@@ -34,7 +34,7 @@ module.exports = {
       weeks: '6',
       enroll_cost:'5000',
       minimum_skill:'Conocimientos básicos de JSON',
-      user_id: 4
+      bootcamp_id: 4
     }
     
    ], {});
