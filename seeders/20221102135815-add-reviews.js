@@ -24,13 +24,6 @@ module.exports = {
       rating: '573172345345',
       user_id: 3,
       bootcamp_id: 3
-    },
-    {
-      title: 'Opinión de Spring#',
-      text: 'Bien',
-      rating: '3462736432',
-      user_id: 4,
-      bootcamp_id: 4
     }
    ], {});
  },

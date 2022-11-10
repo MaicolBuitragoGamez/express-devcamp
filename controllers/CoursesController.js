@@ -6,21 +6,21 @@ const sequelize = require('../config/seq')
 const { DataTypes, ValidationError } = require('sequelize')
 
 //El modelo
-const UserModel = require('../models/user')
+const CoursesModel = require('../models/courses')
 
 //Crear la entidad:
-const User = UserModel(sequelize, DataTypes)
+const Courses = CoursesModel(sequelize, DataTypes)
 
 
 
 //listar todos los bootcamps
-exports.getAllUsers = async (req, res) => {
+exports.getAllCourses = async (req, res) => {
     try {
-        const users = await User.findAll();
+        const courses = await Courses.findAll();
         res.status(200)
             .json({
                 "success": true,
-                "data": users
+                "data": courses
             })
     } catch (error) {
         res.status(200)
@@ -32,15 +32,15 @@ exports.getAllUsers = async (req, res) => {
 }
 
 //listar user por id
-exports.getSingleUser = async (req, res) => {
+exports.getSingleCourse = async (req, res) => {
     try {
-        const singleUser = await User.findByPk(req.params.id);
-        if (singleUser) {
+        const singleCourse = await Courses.findByPk(req.params.id);
+        if (singleCourse) {
             res
                 .status(200)
                 .json({
                     "success": true,
-                    "data": singleUser
+                    "data": singleCourse
                 })
         } else {
             res
@@ -60,13 +60,11 @@ exports.getSingleUser = async (req, res) => {
     }
 }
 
-//actualizar user
-
-exports.updateUser = async (req , res) =>{
+exports.updateCourse = async (req , res) =>{
      
     try {
-    const singleUser = await User.findByPk(req.params.id);
-     if(!singleUser){
+    const singleCourse = await Courses.findByPk(req.params.id);
+     if(!singleCourse){
         res
         .status(400)
         .json({
@@ -76,17 +74,17 @@ exports.updateUser = async (req , res) =>{
      }else{
         // en caso que actualizo el usuario
         //console.log(req.params.id)
-        await User.update (req.body,{
+        await Courses.update (req.body,{
         where:{
             id: req.params.id
         }});
         //selecciono user actualizado
-        const updateUser = await User.findByPk(req.params.id);
+        const updateCourse = await Courses.findByPk(req.params.id);
     res
     .status(200)
     .json({
         "success": true,
-        "data" : updateUser
+        "data" : updateCourse
     })
 }
  } catch (error) {
@@ -101,11 +99,11 @@ exports.updateUser = async (req , res) =>{
     
 }
 
-exports.deleteUser = async (req, res)=>{
+exports.deleteCourse = async (req, res)=>{
     //console.log(req.params.id)
     try {
-        const SingleUser = await User.findByPk(req.params.id);
-        if (!SingleUser) {
+        const SingleCourse = await Courses.findByPk(req.params.id);
+        if (!SingleCourse) {
             res
             .status(400)
             .json({
@@ -113,7 +111,7 @@ exports.deleteUser = async (req, res)=>{
                 "errors": "Usuario no existente"
         })
         } else {
-            await User.destroy({
+            await Courses.destroy({
                 where:{
                     id:req.params.id
                 }
@@ -123,7 +121,7 @@ exports.deleteUser = async (req, res)=>{
         res.status(200)
         .json({
             "success": true,
-            "data":SingleUser,
+            "data":SingleCourse,
             "mensaje":"Se elimino el usuario correctamente"
         });
     }
@@ -138,13 +136,13 @@ exports.deleteUser = async (req, res)=>{
 }
 
 //Crear nuevo user
-exports.createUser = async (req, res) => {
+exports.createCourse = async (req, res) => {
     try {
-        const newUser = await User.create(req.body);
+        const newCourse = await Courses.create(req.body);
         res.status(200)
             .json({
                 "success": true,
-                "data": newUser
+                "data": newCourse
             })
 
     } catch (error) {

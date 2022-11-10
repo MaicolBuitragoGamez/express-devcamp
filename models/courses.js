@@ -18,10 +18,12 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     weeks: DataTypes.INTEGER,
     enroll_cost: DataTypes.FLOAT,
-    minimum_skill: DataTypes.STRING
+    minimum_skill: DataTypes.STRING,
+    bootcamp_id:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'courses',
+    timestamps:false
   });
   return courses;
 };

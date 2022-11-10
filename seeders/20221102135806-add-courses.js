@@ -27,16 +27,7 @@ module.exports = {
       enroll_cost:'5000',
       minimum_skill:'Conocimientos básicos de UML',
       bootcamp_id: 3
-    },
-    {
-      title: 'MongoBD',
-      description: 'Inducción a MongoDB',
-      weeks: '6',
-      enroll_cost:'5000',
-      minimum_skill:'Conocimientos básicos de JSON',
-      bootcamp_id: 4
     }
-    
    ], {});
  },
 
