@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e11521ea-faba-4bc7-b19c-38715da4d105",
+		"_postman_id": "31ee694e-7c9b-4fcf-a474-57fe30b798d3",
 		"name": "express-devcamp",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,9 +12,26 @@
 					"name": "traer todos los bootcamps",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/bootcamps/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"bootcamps",
+								""
+							]
 						}
 					},
 					"response": []
@@ -24,8 +41,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hola\",\r\n    \"description\": \"prueba\",\r\n    \"phone\": \"238\",\r\n    \"average_cost\": \"5000\",\r\n    \"average_rating\": \"3\",\r\n    \"user_id\": 2 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamp",
+							"raw": "http://localhost:5000/api/v1/bootcamps/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -34,7 +60,8 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamp"
+								"bootcamps",
+								""
 							]
 						}
 					},
@@ -46,7 +73,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamp/:id",
+							"raw": "http://localhost:5000/api/v1/bootcamps/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -55,14 +82,8 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamp",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
+								"bootcamps",
+								""
 							]
 						}
 					},
@@ -72,9 +93,19 @@
 					"name": "actualizar bootcamp por id",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Yerson\",\r\n    \"description\": \"AAAAAasdasdasdsaAAA\",\r\n    \"phone\": \"279\",\r\n    \"average_cost\": \"7000\",\r\n    \"average_rating\": \"30\",\r\n    \"user_id\": 5\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamp/1",
+							"raw": "http://localhost:5000/api/v1/bootcamps/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -83,7 +114,7 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamp",
+								"bootcamps",
 								"1"
 							]
 						}
@@ -96,7 +127,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/bootcamp/1",
+							"raw": "http://localhost:5000/api/v1/bootcamps/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -105,7 +136,7 @@
 							"path": [
 								"api",
 								"v1",
-								"bootcamp",
+								"bootcamps",
 								"1"
 							]
 						}
@@ -121,9 +152,29 @@
 					"name": "Crear curso",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"title\": \"asd\",\r\n            \"description\": \"asd\",\r\n            \"weeks\": 1,\r\n            \"enroll_cost\": \"1\",\r\n            \"minimum_skill\": \"1\",\r\n            \"bootcamp_id\": 2\r\n        }"
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses"
+							]
 						}
 					},
 					"response": []
@@ -134,7 +185,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"3"
+							]
 						}
 					},
 					"response": []
@@ -143,9 +205,30 @@
 					"name": "actualizar curso por id",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"title\": \"Javas\",\r\n            \"description\": \"Curso avanzado de JS\",\r\n            \"weeks\": 7,\r\n            \"enroll_cost\": 2500,\r\n            \"minimum_skill\": \"JS\"\r\n        }"
+						},
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"3"
+							]
 						}
 					},
 					"response": []
@@ -153,10 +236,21 @@
 				{
 					"name": "borrar curso",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"4"
+							]
 						}
 					},
 					"response": []
@@ -167,7 +261,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": ""
+							"raw": "http://localhost:5000/api/v1/courses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								""
+							]
 						}
 					},
 					"response": []
@@ -239,7 +344,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Gustavo Beltran\",\r\n    \"email\": \"guvelma@misena.edu.co\",\r\n    \"password\": \"123456\"\r\n}"
+							"raw": "{\r\n    \"username\": \"Gustavo\",\r\n    \"email\": \"guvelma@misena.edu.co\",\r\n    \"password\": \"123456\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/v1/users/",
@@ -271,7 +376,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"Medina Beltran\",\r\n    \"email\": \"medinama@misena.edu.co\",\r\n    \"password\": \"1234568\"\r\n}"
+							"raw": "{\r\n    \"username\": \"Medina\",\r\n    \"email\": \"medinama@misena.edu.co\",\r\n    \"password\": \"1234568\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/api/v1/users/2",
@@ -307,6 +412,147 @@
 								"v1",
 								"users",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "traer todos las reviews",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "traer reviews por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear reviews",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"title\": \"Spring\",\r\n            \"text\": \"Muy bueno, pero demasiado\",\r\n            \"rating\": 573173000000543543534,\r\n            \"user_id\": 2,\r\n            \"bootcamp_id\":2\r\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar review",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "        {\r\n            \"title\": \"SpringBoot\",\r\n            \"text\": \"Muy buenooo\",\r\n            \"rating\": 573,\r\n            \"user_id\": 2,\r\n            \"bootcamp_id\":2\r\n        }"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"reviews",
+								"13"
 							]
 						}
 					},
